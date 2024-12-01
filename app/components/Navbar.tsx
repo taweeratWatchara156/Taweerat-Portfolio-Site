@@ -5,16 +5,16 @@ import { useEffect, useState } from "react";
 
 const pacifico = Pacifico({ subsets: ['latin'], weight: '400' })
 
-export default function Navbar({scrollToWorks, scrollToAboutMe, scrollToTalkToMe}: {scrollToWorks:any, scrollToAboutMe:any, scrollToTalkToMe:any}) {
-    
+export default function Navbar({ scrollToWorks, scrollToAboutMe, scrollToTalkToMe }: { scrollToWorks: any, scrollToAboutMe: any, scrollToTalkToMe: any }) {
+
     const { scrollY } = useScroll()
     const [width, setWidth] = useState(350);
-    const [ isTop, setIsTop ] = useState(false)
+    const [isTop, setIsTop] = useState(false)
 
     useMotionValueEvent(scrollY, "change", (current) => {
-        if(current >= 100 && isTop != false) setIsTop(false)
-        else if(current <= 100 && isTop != true) setIsTop(true)
-      })
+        if (current >= 100 && isTop != false) setIsTop(false)
+        else if (current <= 100 && isTop != true) setIsTop(true)
+    })
 
     useEffect(() => {
         const updateWidth = () => {
@@ -52,10 +52,10 @@ export default function Navbar({scrollToWorks, scrollToAboutMe, scrollToTalkToMe
                 </motion.div>
             </motion.div>
 
-            <motion.div className="fixed sm:hidden w-full flex text-sm text-white px-5 rounded-t-2xl justify-between py-3 font-semibold bottom-0 bg-[#3664ad]" initial={{ y: 250 }} animate={{ y: 0 }}>
-            <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToAboutMe()}>About Me</motion.button>
-                    <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToWorks()}>Works</motion.button>
-                    <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToTalkToMe()}>Talk to me</motion.button>
+            <motion.div className="fixed sm:hidden w-full flex text-sm text-white px-5 rounded-t-2xl justify-between py-5 font-semibold bottom-0 bg-[#3664ad]" initial={{ y: 250 }} animate={{ y: 0 }}>
+                <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToAboutMe()} className="border px-5 py-2 rounded-lg">About Me</motion.button>
+                <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToWorks()} className="border px-5 py-2 rounded-lg">Works</motion.button>
+                <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToTalkToMe()} className="border px-5 py-2 rounded-lg">Talk to me</motion.button>
             </motion.div>
         </div>
 

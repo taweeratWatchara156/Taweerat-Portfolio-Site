@@ -40,7 +40,7 @@ export default function WhoAmI() {
                         <span>{show ? 'Hide text' : 'Show text'}</span>
                         <FontAwesomeIcon icon={show ? faCaretUp : faCaretDown} className="text-xl" />
                     </div>
-                    <motion.p animate={{ height: show ? 200 : 0 }} className="overflow-y-hidden">
+                    <motion.p animate={{ height: show ? 'auto' : 0 }}className="overflow-y-hidden h-0">
                         Hi, my name is Taweerat Watcharamanokarn, or you can call me Poom. I'm a high school student at Debsirinromklao School, and I’m currently in 12th grade. I really love everything about technology; it motivates me a lot. If advanced technology didn’t exist, I wouldn’t be the person I am today.
                         As for my hobbies, I enjoy coding, playing guitar, and exploring new things that excite me. When it comes to coding, I started learning my first programming language in 9th grade. Back then, I just wanted to make a Minecraft mod. It was really hard for me at the time, but that didn’t stop me. I kept learning and improving, and even though it’s still challenging, I’m very happy with my progress.
                     </motion.p>
