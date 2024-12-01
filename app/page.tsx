@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Banner from "./components/Banner";
 import Navbar from "./components/Navbar";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
@@ -13,12 +13,42 @@ import Footer from "./components/Footer";
 
 export default function page() {
   const [init, setInit] = useState(false)
+  const worksRef = useRef<any>(null)
+  const aboutMeRef = useRef<any>(null)
+  const talkToMeRef = useRef<any>(null)
 
   useEffect(() => {
     initParticlesEngine(async (engin) => {
       await loadSlim(engin)
     }).then(() => setInit(true))
   }, [])
+
+  const scrollToWorks = () => {
+    if (worksRef.current) {
+      worksRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  }
+
+  const scrollToAboutMe = () => {
+    if (aboutMeRef.current) {
+      aboutMeRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  }
+
+  const scrollToTalkToMe = () => {
+    if (talkToMeRef.current) {
+      talkToMeRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  }
 
   const particlesLoaded = (container: any) => {
     console.log(container);
@@ -116,14 +146,20 @@ export default function page() {
         )}
 
         <div className="z-10">
-          <Navbar />
+          <Navbar scrollToWorks={scrollToWorks} scrollToAboutMe={scrollToAboutMe} scrollToTalkToMe={scrollToTalkToMe}/>
           <Banner />
         </div>
       </div>
-      <WhoAmI/>
+      <div ref={aboutMeRef}>
+        <WhoAmI/>
+      </div>
       <MySkill/>
-      <MyWorks/>
-      <TalkToMe/>
+      <div ref={worksRef}>
+        <MyWorks/>
+      </div>
+      <div ref={talkToMeRef}>
+        <TalkToMe/>
+      </div>
       <Footer/>
     </div>
   )

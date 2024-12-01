@@ -1,12 +1,20 @@
 "use client";
-import { motion } from "motion/react"
+import { motion, useMotionValueEvent, useScroll } from "motion/react"
 import { Pacifico } from 'next/font/google'
 import { useEffect, useState } from "react";
 
 const pacifico = Pacifico({ subsets: ['latin'], weight: '400' })
 
-export default function Navbar() {
+export default function Navbar({scrollToWorks, scrollToAboutMe, scrollToTalkToMe}: {scrollToWorks:any, scrollToAboutMe:any, scrollToTalkToMe:any}) {
+    
+    const { scrollY } = useScroll()
     const [width, setWidth] = useState(350);
+    const [ isTop, setIsTop ] = useState(false)
+
+    useMotionValueEvent(scrollY, "change", (current) => {
+        if(current >= 100 && isTop != false) setIsTop(false)
+        else if(current <= 100 && isTop != true) setIsTop(true)
+      })
 
     useEffect(() => {
         const updateWidth = () => {
@@ -28,18 +36,26 @@ export default function Navbar() {
                 Taweerat
             </motion.h1>
 
-            <motion.div className={`bg-white hidden sm:flex items-center rounded-tl-3xl overflow-x-hidden overflow-y-hidden h-10 sm:h-12 rounded-bl-3xl `} initial={{ width: 0 }} animate={{ width: width }}>
-                <motion.div className="ml-5 flex text-[#3664ad] text-xs sm:text-sm font-bold gap-5 lg:gap-8 " initial={{ opacity: 0 }} animate={{ opacity: 100 }} transition={{ duration: 1 }}>
-                    <motion.button whileHover={{ scale: 1.05 }}>About Me</motion.button>
-                    <motion.button whileHover={{ scale: 1.05 }}>Works</motion.button>
-                    <motion.button whileHover={{ scale: 1.05 }}>Talk to me</motion.button>
+            <motion.div className={`bg-white z-20 hidden sm:flex items-center rounded-tl-3xl overflow-x-hidden overflow-y-hidden h-10 sm:h-12 rounded-bl-3xl `} initial={{ width: 0 }} animate={{ width: width }}>
+                <motion.div className={` ml-5 flex text-[#3664ad] text-xs sm:text-sm font-bold gap-5 lg:gap-8`} initial={{ opacity: 0 }} animate={{ opacity: 100 }} transition={{ duration: 1 }}>
+                    <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToAboutMe()}>About Me</motion.button>
+                    <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToWorks()}>Works</motion.button>
+                    <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToTalkToMe()}>Talk to me</motion.button>
+                </motion.div>
+            </motion.div>
+
+            <motion.div className={` shadow-xl border fixed right-0 bg-white z-20 hidden sm:flex items-center rounded-tl-3xl overflow-x-hidden overflow-y-hidden h-10 sm:h-12 rounded-bl-3xl `} initial={{ width: 0 }} animate={{ width: isTop ? 0 : width }}>
+                <motion.div className={` ml-5 flex text-[#3664ad] text-xs sm:text-sm font-bold gap-5 lg:gap-8`} initial={{ opacity: 0 }} animate={{ opacity: 100 }} transition={{ duration: 1 }}>
+                    <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToAboutMe()}>About Me</motion.button>
+                    <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToWorks()}>Works</motion.button>
+                    <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToTalkToMe()}>Talk to me</motion.button>
                 </motion.div>
             </motion.div>
 
             <motion.div className="fixed sm:hidden w-full flex text-sm text-white px-5 rounded-t-2xl justify-between py-3 font-semibold bottom-0 bg-[#3664ad]" initial={{ y: 250 }} animate={{ y: 0 }}>
-                <motion.button whileHover={{ scale: 1.05 }}>About Me</motion.button>
-                <motion.button whileHover={{ scale: 1.05 }}>Works</motion.button>
-                <motion.button whileHover={{ scale: 1.05 }}>Talk to me</motion.button>
+            <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToAboutMe()}>About Me</motion.button>
+                    <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToWorks()}>Works</motion.button>
+                    <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToTalkToMe()}>Talk to me</motion.button>
             </motion.div>
         </div>
 

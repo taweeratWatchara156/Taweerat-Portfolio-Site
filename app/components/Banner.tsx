@@ -23,7 +23,7 @@ export default function Banner() {
                 </motion.div>
             </div>
             {/* Right */}
-            <div className="hidden sm:block w-1/2 relative">
+            <div className="hidden sm:block w-1/2 relative z-10">
                 <Image src={poom} alt="poom" className="absolute  bottom-0 left-0 right-0 mx-auto flex w-[400px] lg:w-[450px]"></Image>
             </div>
         </div>
