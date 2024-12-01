@@ -147,7 +147,7 @@ export default function page() {
 
         <div className="z-10">
           <Navbar scrollToWorks={scrollToWorks} scrollToAboutMe={scrollToAboutMe} scrollToTalkToMe={scrollToTalkToMe}/>
-          <Banner />
+          <Banner scrollToWorks={scrollToWorks} scrollToAboutMe={scrollToAboutMe}/>
         </div>
       </div>
       <div ref={aboutMeRef}>

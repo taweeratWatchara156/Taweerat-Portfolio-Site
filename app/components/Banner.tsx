@@ -6,7 +6,7 @@ import poom from '../../public/poom.png'
 import Image from 'next/image'
 import Typewriter from 'typewriter-effect'
 
-export default function Banner() {
+export default function Banner({ scrollToWorks, scrollToAboutMe}: { scrollToWorks: any, scrollToAboutMe: any}) {
     return (
         <div className="flex bg-transparent">
             {/* Left */}
@@ -18,8 +18,8 @@ export default function Banner() {
                     <div className="text-xs lg:text-sm font-light mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus ipsa eligendi totam placeat error, vero porro neque voluptatibus saepe maxime labore nisi tenetur iure rem velit praesentium quia quaerat sed aperiam corrupti odit! Officia eveniet molestiae ratione dignissimos pariatur temporibus dolores consequatur modi laborum facere eos, fuga eius unde illo?</div>
                 </motion.div>
                 <motion.div className="flex text-sm sm:text-base" initial={{ scale: 0 }} animate={{ scale: 1 }}>
-                    <button className="w-fit font-bold bg-orange-500 rounded-full py-3 h-fit lg:py-4 px-5 lg:px-7 hover:bg-orange-600 duration-200 active:scale-95">My Works</button>
-                    <button className="w-fit text-orange-400 py-3 lg:py-4 px-5 lg:px-7 h-fit font-light flex items-center hover:scale-[102%] duration-200 active:scale-95"><FontAwesomeIcon icon={faUser} className="w-3 mr-2" /> About Me</button>
+                    <button onClick={() => scrollToWorks()} className="w-fit font-bold bg-orange-500 rounded-full py-3 h-fit lg:py-4 px-5 lg:px-7 hover:bg-orange-600 duration-200 active:scale-95">My Works</button>
+                    <button onClick={() => scrollToAboutMe()} className="w-fit text-orange-400 py-3 lg:py-4 px-5 lg:px-7 h-fit font-bold flex items-center hover:scale-[102%] duration-200 active:scale-95"><FontAwesomeIcon icon={faUser} className="w-3 mr-2" /> About Me</button>
                 </motion.div>
             </div>
             {/* Right */}

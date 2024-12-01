@@ -1,4 +1,6 @@
 "use client";
+import { faBriefcase, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion, useMotionValueEvent, useScroll } from "motion/react"
 import { Pacifico } from 'next/font/google'
 import { useEffect, useState } from "react";
@@ -53,9 +55,9 @@ export default function Navbar({ scrollToWorks, scrollToAboutMe, scrollToTalkToM
             </motion.div>
 
             <motion.div className="fixed sm:hidden w-full flex text-sm text-white px-5 rounded-t-2xl justify-between py-5 font-semibold bottom-0 bg-[#3664ad]" initial={{ y: 250 }} animate={{ y: 0 }}>
-                <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToAboutMe()} className="border px-5 py-2 rounded-lg">About Me</motion.button>
-                <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToWorks()} className="border px-5 py-2 rounded-lg">Works</motion.button>
-                <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToTalkToMe()} className="border px-5 py-2 rounded-lg">Talk to me</motion.button>
+                <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToAboutMe()} className="border px-3 py-2 rounded-lg"><FontAwesomeIcon icon={faUser} className="mr-2"/>About Me</motion.button>
+                <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToWorks()} className="border px-3 py-2 rounded-lg"><FontAwesomeIcon icon={faBriefcase} className="mr-2"/>Works</motion.button>
+                <motion.button whileHover={{ scale: 1.05 }} onClick={() => scrollToTalkToMe()} className="border px-3 py-2 rounded-lg"><FontAwesomeIcon icon={faPhone} className="mr-2"/>Talk to me</motion.button>
             </motion.div>
         </div>
 
