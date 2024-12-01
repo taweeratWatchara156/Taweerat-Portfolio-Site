@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} flex-1 antialiased`}>
+      <body className={`flex-1 antialiased font-[Roboto]`}>
         {children}
       </body>
     </html>
