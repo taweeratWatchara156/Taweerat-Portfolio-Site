@@ -14,8 +14,8 @@ export default function Banner({ scrollToWorks, scrollToAboutMe}: { scrollToWork
                 <motion.div className="flex flex-col gap-2 text-2xl lg:text-3xl font-bold" initial={{ opacity: 0 }} animate={{ opacity: 100 }}>
                     <h1>Hello, I'm</h1>
                     <h1 className="flex"><Typewriter options={{strings: ['Taweerat Watcharamanokarn', 'Poom'], autoStart: true, loop: true}}/> a</h1>
-                    <h1>Student of DSR</h1>
-                    <div className="text-xs lg:text-sm font-light mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus ipsa eligendi totam placeat error, vero porro neque voluptatibus saepe maxime labore nisi tenetur iure rem velit praesentium quia quaerat sed aperiam corrupti odit! Officia eveniet molestiae ratione dignissimos pariatur temporibus dolores consequatur modi laborum facere eos, fuga eius unde illo?</div>
+                    <h1>Student from Debsirinromklao school</h1>
+                    <div className="text-xs lg:text-sm font-light mt-5">Hi, my name is Taweerat Watcharamanokarn, or you can call me Poom. I'm a high school student at Debsirinromklao School,</div>
                 </motion.div>
                 <motion.div className="flex text-sm sm:text-base" initial={{ scale: 0 }} animate={{ scale: 1 }}>
                     <button onClick={() => scrollToWorks()} className="w-fit font-bold bg-orange-500 rounded-full py-3 h-fit lg:py-4 px-5 lg:px-7 hover:bg-orange-600 duration-200 active:scale-95">My Works</button>
